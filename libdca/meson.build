@@ -42,7 +42,7 @@ version_script = meson.current_build_dir() / 'libdca.def'
 if host_machine.system() in ['darwin', 'ios']
     vflag = '-Wl,-exported_symbols_list,@0@'.format(version_script)
 else
-    vflag = '-Wl,--version-script,@0@'.format(version_script)
+    vflag = cc.get_supported_link_arguments('-Wl,--version-script,@0@'.format(version_script))
 endif
 
 libdca_lib = library(
@@ -63,7 +63,7 @@ libdca_lib = library(
     c_args: project_args,
     include_directories: incdir,
     dependencies: m_dep,
-    link_args: cc.get_supported_link_arguments(vflag),
+    link_args: vflag,
     link_depends: symbols,
     vs_module_defs: symbols,
     install: true,
