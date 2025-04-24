@@ -1,0 +1,3 @@
+option('fixed', type: 'feature', value: 'disabled', description: 'use fixed-point (integer-based) arithmetic')
+option('double', type: 'feature', value: 'disabled', description: 'use double-precision samples')
+option('win', type: 'feature', description: 'make a version using win audio')
